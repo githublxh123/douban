@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Douban Book Top 250</title>
+</head>
+<body>
+<h1>Douban Book Top 250</h1>
+<button onclick="test()">抓取数据</button>
+
+
+<ol id="tb">
+
+</ol>
+</body>
+</html>
+<script>
+    function appendToTable(book) {
+        var li = document.createElement("li")
+        li.innerText = JSON.stringify(book)
+        document.getElementById("tb").appendChild(li)
+        return
+        for (const bookKey in book) {
+            if (bookKey === "id") {
+                continue
+            }
+
+            var td = document.createElement("td")
+            if (bookKey === "author") {
+                var img = document.createElement("img")
+                img.src = book[bookKey]
+
+            } else {
+                td.innerText = book[bookKey]
+            }
+            tr.appendChild(td)
+        }
+        document.getElementById("tb").appendChild(tr)
+    }
+
+    function test() {
+        fetch("/book/book_spider/").then(response => {
+            response.json().then(dataList => {
+                for (const book of dataList) {
+                    appendToTable(book)
+                }
+            })
+        })
+
+
+    }
+</script>
+
