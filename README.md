@@ -30,11 +30,11 @@ CREATE UNIQUE INDEX uni_title_author ON books (title,author);
 
 """
 
-### 3. 创建虚拟环境
+### 3. 创建新的虚拟环境
 
 setings  -->  项目  --->python解释器  ---> 添加本地解释器  ---> 新建环境
 
-### 4. 导入环境
+### 4. 安装依赖
 
 pip install -r requirements.txt
 
